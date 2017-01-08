@@ -1,0 +1,45 @@
+#!/usr/bin/python
+
+import local_header_footer as lhf
+import cgi
+
+def print_line_chart():
+  print '<div class="row">'
+  print   '<div id="chart1" class="dc-chart">'
+  print     'Line Chart (selectable) <br>'
+  print     '<a class="reset" href="javascript:linechart.filterAll(); dc.redrawAll();"'
+  print        'style="display: none;">reset</a>'
+  print    '</div>'
+  print  '</div>'
+
+def print_composite_chart():
+  print '<div class="row">'
+  print   '<div id="chart2" class="dc-chart">'
+  print     'Composite Chart <br>'
+  print    '</div>'
+  print  '</div>'
+
+def print_check_box():
+  print '''
+  <form action="%s/dcjscgipy-simple" method="get" target="_blank">
+  <input type="checkbox" name="LineChart" value="on" /> Line Chart 
+  <input type="checkbox" name="CompositeChart" value="on" /> Composite Chart 
+  <input type="submit" value="Select Subject" />
+  </form>
+  ''' % lhf.base_path
+
+form = cgi.FieldStorage()   # Create instance of Field Storage
+
+LineChart_flag = "ON" if form.getvalue("LineChart") else "OFF"
+CompositeChart_flag = "ON" if form.getvalue("CompositeChart") else "OFF"
+
+lhf.print_header("dc-js python cgi example")
+
+print_check_box()
+
+if LineChart_flag == "ON":
+  print_line_chart()
+if CompositeChart_flag == "ON":
+  print_composite_chart()
+
+lhf.print_footer()

@@ -1,0 +1,16 @@
+#!/usr/bin/python
+
+import local_header_footer as lhf
+
+lhf.print_header("Radio Button Form")
+
+print '''
+      <form action="%s/radio_button" method="get" target="_blank">
+      <input type="radio" name="subject" value="maths" /> Maths
+      <input type="radio" name="subject" value="physics" /> Physics
+      <input type="radio" name="subject" value="english" /> English
+      <input type="submit" value="Select Subject" />
+      </form>
+      ''' % lhf.cgi_path 
+
+lhf.print_footer()

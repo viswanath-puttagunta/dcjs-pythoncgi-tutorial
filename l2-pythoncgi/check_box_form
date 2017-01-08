@@ -1,0 +1,16 @@
+#!/usr/bin/python
+import local_header_footer as lhf
+
+lhf.print_header("Hello - Checkbox Form")
+
+print '''
+<form action="%s/check_box" method="get" target="_blank">
+<input type="checkbox" name="maths" value="on" /> Maths
+<input type="checkbox" name="physics" value="on" /> Physics
+<input type="submit" value="Select Subject" />
+</form>
+''' % lhf.cgi_path
+
+lhf.print_footer()
+
+

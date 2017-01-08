@@ -1,0 +1,20 @@
+#!/usr/bin/python
+import os
+
+#For CGI handling
+import cgi
+import local_header_footer as lhf
+
+#Create instance of FieldStorage
+form = cgi.FieldStorage()
+
+#Get data from fields
+subject = form.getvalue("subject")
+if subject == None:
+  subject = "Not Set"
+
+lhf.print_header("Radio get/post handler")
+
+print "<h2>Selected Subject: %s </h2>" % subject
+
+lhf.print_footer()

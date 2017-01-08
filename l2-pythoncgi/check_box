@@ -1,0 +1,28 @@
+#!/usr/bin/python
+import os
+
+#For CGI handling
+import cgi, cgitb
+
+import local_header_footer as lhf
+
+#Create instance of FieldStorage
+form = cgi.FieldStorage()
+
+#Get data from fields
+if form.getvalue("maths"):
+  math_flag = "ON"
+else:
+  math_flag = "OFF"
+
+if form.getvalue("physics"):
+  physics_flag = "ON"
+else:
+  physics_flag = "OFF"
+
+lhf.print_header("Checkbox get/post handler")
+
+print "<h2> CheckBox Math %s</h2>" % math_flag
+print "<h2> CheckBox Physics %s</h2>" % physics_flag
+
+lhf.print_footer()

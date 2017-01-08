@@ -1,0 +1,14 @@
+#!/usr/bin/python
+import local_header_footer as lhf
+
+lhf.print_header("First-Last Form")
+
+print '''
+      <form action="%s/first_last" method="get">
+      First Name: <input type="text" name="first_name">  <br />
+      Last Name: <input type="text" name="last_name" />
+      <input type="submit" value="Submit" />
+      </form>
+      ''' % lhf.cgi_path 
+
+lhf.print_footer()
